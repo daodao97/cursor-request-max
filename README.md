@@ -1,4 +1,4 @@
-[English](./README.md) | [简体中文](./README_zh.md)
+[English](./README.md) | [简体中文](./README_zh.md) | [Follow Me on X](https://x.com/intent/follow?screen_name=daodao97__)
 
 # Cursor Request Max - Maximize Cursor Request Potential
 
