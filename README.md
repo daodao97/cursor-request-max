@@ -1,8 +1,12 @@
 [English](./README.md) | [简体中文](./README_zh.md) | [Follow Me on X](https://x.com/intent/follow?screen_name=daodao97__)
 
+[![cursor request max video](https://img.youtube.com/vi/HSVFPoGistA/0.jpg)](https://www.youtube.com/watch?v=HSVFPoGistA)
+
 # Cursor Request Max - Maximize Cursor Request Potential
 
 This is a revolutionary VS Code extension specifically designed to **maximize the utilization of Cursor's MCP tool calling capabilities**. Through intelligent interactive feedback mechanisms, it enables Cursor to continuously call MCP tools within a single request, fully leveraging the potential of the 25 tool call limit.
+
+https://youtu.be/HSVFPoGistA
 
 ## 🚀 Core Philosophy
 

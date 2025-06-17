@@ -1,5 +1,7 @@
 [English](./README.md) | [简体中文](./README_zh.md) | [Follow Me on X](https://x.com/intent/follow?screen_name=daodao97__)
 
+[![cursor request max video](https://img.youtube.com/vi/HSVFPoGistA/0.jpg)](https://www.youtube.com/watch?v=HSVFPoGistA)
+
 # Cursor Request Max - 最大化 Cursor 请求潜力
 
 这是一个革命性的 Cursor 扩展，专门设计用于**最大化利用 Cursor 的 MCP 工具调用能力**。通过智能的交互式反馈机制，让 Cursor 在单次请求中持续调用 MCP 工具，充分发挥 25 次工具调用限制的潜力。
