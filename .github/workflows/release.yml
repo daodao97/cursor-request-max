@@ -1,0 +1,99 @@
+name: Release Extension
+
+on:
+  push:
+    tags:
+      - 'v*'  # 当推送标签时触发（如 v1.0.0）
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+      
+    - name: 设置 Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: 安装依赖
+      run: npm ci
+      
+    - name: 编译 TypeScript (使用 esbuild)
+      run: npm run compile
+      
+    - name: 构建 React 组件
+      run: npm run build:react
+      
+    - name: 打包扩展
+      run: npm run package
+      
+    - name: 获取版本号
+      id: get_version
+      run: |
+        if [[ $GITHUB_REF == refs/tags/* ]]; then
+          VERSION=${GITHUB_REF#refs/tags/v}
+        else
+          VERSION=$(node -p "require('./package.json').version")
+        fi
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "扩展版本: $VERSION"
+        
+    - name: 创建 GitHub Release
+      uses: actions/create-release@v1
+      id: create_release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref_name }}
+        release_name: Release ${{ steps.get_version.outputs.version }}
+        body: |
+          ## 更新内容
+          
+          - 自动构建和发布
+          - 版本 ${{ steps.get_version.outputs.version }}
+          
+          ## 安装方法
+          
+          ### 方法一：手动安装（推荐）
+          
+          1. 下载下方的 `.vsix` 文件
+          2. 在 VS Code 中按 `Ctrl+Shift+P` (Windows/Linux) 或 `Cmd+Shift+P` (Mac)
+          3. 输入 "Extensions: Install from VSIX..."
+          4. 选择下载的 `.vsix` 文件
+          5. 重启 VS Code 以启用扩展
+          
+          ### 方法二：命令行安装
+          
+          ```bash
+          # 下载 .vsix 文件后执行
+          code --install-extension cursor-request-max-${{ steps.get_version.outputs.version }}.vsix
+          ```
+          
+          ## 使用步骤
+          
+          1. 安装完成后，扩展将在启动时自动激活并启动 MCP 服务器
+          2. 按 `Cmd/Ctrl + Shift + P` 输入 "Cursor Request Max" 打开面板
+          3. 执行 "Initialize .cursor Directory Structure" 初始化 `.cursor` 规则和 MCP 配置
+          4. 在 Cursor 设置 -> MCP 中检查 MCP 服务器是否正在运行（默认端口: 3100）
+          
+          ## 项目地址
+          
+          🔗 [GitHub](https://github.com/daodao97/cursor-request-max)
+          📖 [使用文档](https://github.com/daodao97/cursor-request-max/blob/main/README.md)
+        draft: false
+        prerelease: false
+        
+    - name: 上传扩展包到 Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./cursor-request-max-${{ steps.get_version.outputs.version }}.vsix
+        asset_name: cursor-request-max-${{ steps.get_version.outputs.version }}.vsix
+        asset_content_type: application/zip

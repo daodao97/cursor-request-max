@@ -1,0 +1,138 @@
+{
+    "name": "cursor-request-max",
+    "displayName": "Cursor Request Max",
+    "description": "Cursor Request Max is a VS Code extension that allows you to request max from Cursor",
+    "version": "0.0.1",
+    "author": "daodao97",
+    "publisher": "daodao97",
+    "engines": {
+        "vscode": "^1.75.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/daodao97/cursor-request-max"
+    },
+    "icon": "icon.jpeg",
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "cursorMax.openSidebar",
+                "title": "Open Cursor Request Max",
+                "category": "Cursor Request Max"
+            },
+            {
+                "command": "cursorMax.menu.view",
+                "title": "View Cursor Request Max",
+                "category": "Cursor Request Max"
+            },
+            {
+                "command": "cursorMax.startServer",
+                "title": "Start MCP Server",
+                "category": "Cursor Request Max"
+            },
+            {
+                "command": "cursorMax.stopServer",
+                "title": "Stop MCP Server",
+                "category": "Cursor Request Max"
+            },
+            {
+                "command": "cursorMax.initCursorStructure",
+                "title": "Initialize .cursor Directory Structure",
+                "category": "Cursor Request Max"
+            }
+        ],
+        "views": {
+            "cursorMaxSidebar": [
+                {
+                    "id": "cursorMaxSidebarView",
+                    "name": "Cursor Request Max",
+                    "when": "cursorMaxSidebarVisible",
+                    "type": "webview"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "cursorMaxSidebar",
+                    "title": "Cursor Request Max",
+                    "icon": "$(server)"
+                }
+            ]
+        },
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "cursorMax.openSidebar",
+                    "when": "true"
+                },
+                {
+                    "command": "cursorMax.startServer",
+                    "when": "true"
+                },
+                {
+                    "command": "cursorMax.stopServer",
+                    "when": "true"
+                },
+                {
+                    "command": "cursorMax.initCursorStructure",
+                    "when": "true"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run esbuild-base -- --minify && npm run build:react",
+        "esbuild-base": "node esbuild.js",
+        "esbuild": "npm run esbuild-base -- --sourcemap",
+        "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+        "compile": "npm run esbuild",
+        "watch": "npm run esbuild-watch",
+        "build:react": "vite build",
+        "dev:react": "vite build --watch",
+        "preview:react": "vite preview",
+        "package": "vsce package",
+        "publish": "vsce publish"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.0.0",
+        "@types/express": "^5.0.2",
+        "@types/node": "^18.0.0",
+        "@types/react": "^18.2.0",
+        "@types/react-dom": "^18.2.0",
+        "@types/vscode": "^1.74.0",
+        "@vitejs/plugin-react": "^4.0.0",
+        "@vscode/vsce": "^3.2.0",
+        "esbuild": "^0.19.12",
+        "tailwindcss": "^4.0.0",
+        "tw-animate-css": "^1.3.2",
+        "typescript": "^4.9.4",
+        "vite": "^5.4.0"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.12.1",
+        "@radix-ui/react-avatar": "^1.1.10",
+        "@radix-ui/react-slot": "^1.2.3",
+        "@radix-ui/react-tooltip": "^1.2.7",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "express": "^5.1.0",
+        "lucide-react": "^0.511.0",
+        "marked": "^15.0.12",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-markdown": "^10.1.0",
+        "remark-breaks": "^4.0.0",
+        "remark-gfm": "^4.0.1",
+        "shiki": "^3.4.2",
+        "tailwind-merge": "^3.3.0",
+        "zod": "^3.25.42"
+    }
+}

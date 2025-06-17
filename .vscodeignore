@@ -1,0 +1,30 @@
+# 源代码和开发文件
+src/
+.vscode-test/
+.vscode/
+
+# 依赖（已通过esbuild打包到out/extension.js中）
+node_modules/
+
+# Git 相关
+.git/
+.gitignore
+
+# 构建和配置文件
+tsconfig.json
+esbuild.js
+.eslintrc.json
+.prettierrc
+vite.config.mjs
+components.json
+
+# 文档
+README.md
+README_zh.md
+
+# 脚本
+install.sh
+
+# 已构建的包
+*.vsix
+.github/
