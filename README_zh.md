@@ -15,7 +15,8 @@ Cursor 在一次请求中最多可以调用 25 次工具，但传统的使用方
 1. **下载并手动安装**
 
    从发布页面下载最新版本：
-   ![release](https://github.com/daodao97/cursor-request-max/release)
+   
+   [release](https://github.com/daodao97/cursor-request-max/release)
    
    **手动安装步骤：**
    - 下载 `.vsix` 文件

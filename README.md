@@ -15,7 +15,7 @@ Cursor can make up to 25 tool calls in a single request, but traditional usage p
 1. **Download and Manual Installation**
 
    Download the latest version from the release page:
-   ![release](https://github.com/daodao97/cursor-request-max/release)
+   [release](https://github.com/daodao97/cursor-request-max/release)
    
    **Manual Installation Steps:**
    - Download the `.vsix` file
